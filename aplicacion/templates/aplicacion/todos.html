@@ -1,0 +1,33 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+{% block titulo %}todos los cursos{% endblock titulo %}
+
+{% block cabecera %} todos los cursos {% endblock cabecera %}
+
+{% block contenido %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todos los cursos</title>
+</head>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>precio</th>
+            <th>precio_descuento</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for todos in todos %}
+    <tr>
+        <td>{{ todods.id }}</td>
+        <td>{{ todos.nombre }}</td>
+        <td>{{ todos.precio }}</td>
+        <td>{{ todos.precio_descuento }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

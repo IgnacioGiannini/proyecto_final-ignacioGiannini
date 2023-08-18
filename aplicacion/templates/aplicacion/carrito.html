@@ -1,0 +1,60 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+{% block titulo %}Carrito{% endblock titulo %}
+{% block cabecera %} Carrito {% endblock cabecera %}
+
+{% block contenido %}
+<table>
+    <tr>
+        <td width="200"><h2>Curso</h2></td>
+        <td>
+            <a
+            href="{% url 'createCarrito' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="New Record"> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Carrito</title>
+</head>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>precio</th>
+            <th>precio_descuento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for carritos in carritos %}
+    <tr>
+        <td>{{ carritos.id }}</td>
+        <td>{{ carritos.nombre }}</td>
+        <td>{{ carritos.precio }}</td>
+        <td>{{ carritos.precio_descuento }}</td>
+        <td>
+            <a
+            href="{% url 'updateCarrito' carritos.id %}"
+              class="btn btn-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+            </a>
+            <a
+              href="{% url 'deleteCarrito' carritos.id %}"
+              class="btn btn-danger"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+            </a>
+          </td>  
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}
